@@ -47,17 +47,6 @@ $ sh build.sh build-firmware RAK_4631_repeater
 EOF
 }
 
-# echo "=== BUILD DIR ==="
-# pwd
-# ls -la
-# echo "=== CHECK PIO ==="
-# ls -la .pio || echo ".pio NOT HERE"
-
-echo "PIO_PROJECT_DIR=$PIO_PROJECT_DIR"
-# echo "HOME=$HOME"
-
-find $PWD -type d -name "build" -o -name ".pio"
-
 # get a list of pio env names that start with "env:"
 get_pio_envs() {
   pio project config | grep 'env:' | sed 's/env://'
@@ -142,6 +131,9 @@ build_firmware() {
     echo "FIRMWARE_VERSION must be set in environment"
     exit 1
   fi
+
+  # FIRMWARE_VERSION=$(echo "$FIRMWARE_VERSION" | tr '/' '_')
+  FIRMWARE_VERSION="${FIRMWARE_VERSION//\//_}"
 
   # set firmware version string
   # e.g: v1.0.0-abcdef
