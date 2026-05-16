@@ -22,7 +22,7 @@ void PicoEbyteSx1262Board::begin() {
 
   Wire.begin();
 
-  delay(100); // give sx1262 some time to power up
+  delay(10); // give sx1262 some time to power up
 }
 
 bool PicoEbyteSx1262Board::startOTAUpdate(const char *id, char reply[]) {
