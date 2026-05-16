@@ -204,6 +204,7 @@ build_firmware() {
   ls -lah
 
   ls -lah ./out
+  ls -lah .pio/build/*/
 
 }
 
