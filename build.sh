@@ -47,6 +47,12 @@ $ sh build.sh build-firmware RAK_4631_repeater
 EOF
 }
 
+echo "=== BUILD DIR ==="
+pwd
+ls -la
+echo "=== CHECK PIO ==="
+ls -la .pio || echo ".pio NOT HERE"
+
 # get a list of pio env names that start with "env:"
 get_pio_envs() {
   pio project config | grep 'env:' | sed 's/env://'
