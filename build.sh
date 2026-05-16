@@ -202,6 +202,7 @@ build_firmware() {
   echo "WHAT HAPPENED RP2040"
   fi
 
+  echo "$FIRMWARE_FILENAME"
   ls -lah
 
   ls -lah out/
