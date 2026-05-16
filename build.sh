@@ -47,14 +47,14 @@ $ sh build.sh build-firmware RAK_4631_repeater
 EOF
 }
 
-echo "=== BUILD DIR ==="
-pwd
-ls -la
-echo "=== CHECK PIO ==="
-ls -la .pio || echo ".pio NOT HERE"
+# echo "=== BUILD DIR ==="
+# pwd
+# ls -la
+# echo "=== CHECK PIO ==="
+# ls -la .pio || echo ".pio NOT HERE"
 
 echo "PIO_PROJECT_DIR=$PIO_PROJECT_DIR"
-echo "HOME=$HOME"
+# echo "HOME=$HOME"
 
 find $PWD -type d -name "build" -o -name ".pio"
 
