@@ -1,4 +1,4 @@
-name: Build Companion Firmwares
+name: Build Raspberry Pi Pico + Ebyte SX1262 Firmwares
 
 permissions:
   contents: write
