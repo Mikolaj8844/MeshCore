@@ -165,6 +165,8 @@ build_firmware() {
   ls -lah ./.pio
   echo "WHAT HAPPENED"
 
+  echo "$ENV_PLATFORM"
+
   # build merge-bin for esp32 fresh install, copy .bins to out folder (e.g: Heltec_v3_room_server-v1.0.0-SHA.bin)
   if [ "$ENV_PLATFORM" == "ESP32_PLATFORM" ]; then
     pio run -t mergebin -e $1
@@ -196,12 +198,12 @@ build_firmware() {
     cp .pio/build/$1/firmware.bin out/${FIRMWARE_FILENAME}.bin 2>/dev/null || true
     cp .pio/build/$1/firmware.uf2 out/${FIRMWARE_FILENAME}.uf2 2>/dev/null || true
 
-  echo "WHAT HAPPENED"
-  echo "WHAT HAPPENED"
-  echo "WHAT HAPPENED"
-  echo "WHAT HAPPENED"
-  echo "WHAT HAPPENED"
+  echo "WHAT HAPPENED RP2040"
   fi
+
+  ls -lah
+
+  ls -lah ./out
 
 }
 
