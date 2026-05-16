@@ -26,7 +26,9 @@ jobs:
       - name: Build Firmwares
         env:
           FIRMWARE_VERSION: ${{ env.GIT_TAG_VERSION }}
-        run: /usr/bin/env bash build.sh build-matching-firmwares pico_ebyte_sx1262
+        run: |
+          export PIO_PROJECT_DIR=$PWD
+          /usr/bin/env bash build.sh build-matching-firmwares pico_ebyte_sx1262
 
       - name: Debug out directory
         run: |
