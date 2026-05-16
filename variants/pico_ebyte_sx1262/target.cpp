@@ -84,6 +84,10 @@ bool radio_init() {
 
   Serial.printf("[RADIO] init result: %d\n", ok);
 
+digitalWrite(LED_BUILTIN, HIGH);
+delay(2000);
+digitalWrite(LED_BUILTIN, LOW);
+
   return ok;
 }
 
