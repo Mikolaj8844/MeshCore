@@ -5,7 +5,7 @@
 
 PicoEbyteSx1262Board board;
 
-RADIO_CLASS* radio;
+RADIO_CLASS radio(P_LORA_NSS, P_LORA_DIO_1, P_LORA_RESET, P_LORA_BUSY, SPI1);
 WRAPPER_CLASS radio_driver(radio, board);
 
 VolatileRTCClock fallback_clock;
