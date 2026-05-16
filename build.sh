@@ -53,6 +53,11 @@ ls -la
 echo "=== CHECK PIO ==="
 ls -la .pio || echo ".pio NOT HERE"
 
+echo "PIO_PROJECT_DIR=$PIO_PROJECT_DIR"
+echo "HOME=$HOME"
+
+find $PWD -type d -name "build" -o -name ".pio"
+
 # get a list of pio env names that start with "env:"
 get_pio_envs() {
   pio project config | grep 'env:' | sed 's/env://'
