@@ -3,7 +3,7 @@
 #include <Arduino.h>
 #include <helpers/ArduinoHelpers.h>
 
-WaveshareBoard board;
+PicoEbyteSx1262Board board;
 
 RADIO_CLASS radio = new Module(P_LORA_NSS, P_LORA_DIO_1, P_LORA_RESET, P_LORA_BUSY, SPI1);
 WRAPPER_CLASS radio_driver(radio, board);

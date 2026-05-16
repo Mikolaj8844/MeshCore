@@ -7,9 +7,9 @@
 #include <helpers/radiolib/CustomSX1262Wrapper.h>
 #include <helpers/radiolib/RadioLibWrappers.h>
 #include <helpers/SensorManager.h>
-#include <PicoEbyteSx1262.h>
+#include <PicoEbyteSx1262Board.h>
 
-extern PicoEbyteSx1262 board;
+extern PicoEbyteSx1262Board board;
 extern WRAPPER_CLASS radio_driver;
 extern AutoDiscoverRTCClock rtc_clock;
 extern SensorManager sensors;

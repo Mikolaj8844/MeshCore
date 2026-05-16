@@ -1,9 +1,9 @@
-#include "PicoEbyteSx1262.h"
+#include "PicoEbyteSx1262Board.h"
 
 #include <Arduino.h>
 #include <Wire.h>
 
-void PicoEbyteSx1262::begin() {
+void PicoEbyteSx1262Board::begin() {
   // for future use, sub-classes SHOULD call this from their begin()
   startup_reason = BD_STARTUP_NORMAL;
 
@@ -25,6 +25,6 @@ void PicoEbyteSx1262::begin() {
   delay(10); // give sx1262 some time to power up
 }
 
-bool PicoEbyteSx1262::startOTAUpdate(const char *id, char reply[]) {
+bool PicoEbyteSx1262Board::startOTAUpdate(const char *id, char reply[]) {
   return false;
 }
