@@ -195,16 +195,18 @@ build_firmware() {
 
   # for rp2040, copy .bin and .uf2 to out folder
   if [ "$ENV_PLATFORM" == "RP2040_PLATFORM" ]; then
-    cp .pio/build/$1/firmware.bin out/${FIRMWARE_FILENAME}.bin 2>/dev/null || true
-    cp .pio/build/$1/firmware.uf2 out/${FIRMWARE_FILENAME}.uf2 2>/dev/null || true
+    echo "BEFORE"
+    cp .pio/build/$1/firmware.bin out/${FIRMWARE_FILENAME}.bin
+    cp .pio/build/$1/firmware.uf2 out/${FIRMWARE_FILENAME}.uf2
 
   echo "WHAT HAPPENED RP2040"
   fi
 
   ls -lah
 
-  ls -lah ./out
+  ls -lah out/
   ls -lah .pio/build/*/
+  ls -lah 
 
 }
 
