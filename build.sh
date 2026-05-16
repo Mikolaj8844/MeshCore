@@ -170,6 +170,8 @@ build_firmware() {
     pio run -t mergebin -e $1
     cp .pio/build/$1/firmware.bin out/${FIRMWARE_FILENAME}.bin 2>/dev/null || true
     cp .pio/build/$1/firmware-merged.bin out/${FIRMWARE_FILENAME}-merged.bin 2>/dev/null || true
+
+  echo "WHAT HAPPENED ESP32"
   fi
 
   # build .uf2 for nrf52 boards, copy .uf2 and .zip to out folder (e.g: RAK_4631_Repeater-v1.0.0-SHA.uf2)
@@ -177,18 +179,28 @@ build_firmware() {
     python3 bin/uf2conv/uf2conv.py .pio/build/$1/firmware.hex -c -o .pio/build/$1/firmware.uf2 -f 0xADA52840
     cp .pio/build/$1/firmware.uf2 out/${FIRMWARE_FILENAME}.uf2 2>/dev/null || true
     cp .pio/build/$1/firmware.zip out/${FIRMWARE_FILENAME}.zip 2>/dev/null || true
+
+  echo "WHAT HAPPENED NRF52"
   fi
 
   # for stm32, copy .bin and .hex to out folder
   if [ "$ENV_PLATFORM" == "STM32_PLATFORM" ]; then
     cp .pio/build/$1/firmware.bin out/${FIRMWARE_FILENAME}.bin 2>/dev/null || true
     cp .pio/build/$1/firmware.hex out/${FIRMWARE_FILENAME}.hex 2>/dev/null || true
+
+  echo "WHAT HAPPENED STM32"
   fi
 
   # for rp2040, copy .bin and .uf2 to out folder
   if [ "$ENV_PLATFORM" == "RP2040_PLATFORM" ]; then
     cp .pio/build/$1/firmware.bin out/${FIRMWARE_FILENAME}.bin 2>/dev/null || true
     cp .pio/build/$1/firmware.uf2 out/${FIRMWARE_FILENAME}.uf2 2>/dev/null || true
+
+  echo "WHAT HAPPENED"
+  echo "WHAT HAPPENED"
+  echo "WHAT HAPPENED"
+  echo "WHAT HAPPENED"
+  echo "WHAT HAPPENED"
   fi
 
 }
