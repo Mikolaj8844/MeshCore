@@ -2,6 +2,7 @@
 
 #include <Arduino.h>
 #include <Wire.h>
+#include "LittleFS.h"
 
 void PicoEbyteSx1262Board::begin() {
   // for future use, sub-classes SHOULD call this from their begin()
@@ -26,6 +27,12 @@ void PicoEbyteSx1262Board::begin() {
 
   adc_init();
   adc_set_temp_sensor_enabled(true);
+
+  // Forces the Pico flash layout to format itself if blank
+  if (!LittleFS.begin()) {
+    LittleFS.format();
+    LittleFS.begin();
+  }
 }
 
 bool PicoEbyteSx1262Board::startOTAUpdate(const char *id, char reply[]) {
