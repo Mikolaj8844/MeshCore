@@ -30,13 +30,6 @@ jobs:
           export PIO_PROJECT_DIR=$PWD
           /usr/bin/env bash build.sh build-matching-firmwares pico_ebyte_sx1262
 
-      - name: Debug out directory
-        run: |
-          echo "PWD: $(pwd)"
-          ls -R
-          echo "OUT:"
-          ls -R out || true
-
       - name: Upload Workflow Artifacts
         uses: actions/upload-artifact@v4
         with:
