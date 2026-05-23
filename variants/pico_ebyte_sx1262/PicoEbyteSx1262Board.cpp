@@ -5,6 +5,9 @@
 #include "LittleFS.h"
 
 void PicoEbyteSx1262Board::begin() {
+  // 1. Force the Pico's USB Serial stack to initialize at boot
+  Serial.begin(115200);
+
   // for future use, sub-classes SHOULD call this from their begin()
   startup_reason = BD_STARTUP_NORMAL;
 
