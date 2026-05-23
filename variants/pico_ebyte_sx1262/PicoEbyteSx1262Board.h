@@ -2,6 +2,7 @@
 
 #include <Arduino.h>
 #include <MeshCore.h>
+#include "hardware/adc.h"
 
 // LoRa radio module pins for Waveshare RP2040-LoRa-HF/LF
 // https://files.waveshare.com/wiki/RP2040-LoRa/Rp2040-lora-sch.pdf
@@ -52,7 +53,23 @@ public:
     return 0;
 #endif
 
-  float getMCUTemperature() override;
+  // Add this right inside the public: section of your class definition
+  float getMCUTemperature() override {
+      // 1. Point the ADC mux to channel 4 (connected to the internal sensor)
+      adc_select_input(4); 
+    
+      // 2. Read the raw 12-bit value (0 - 4095)
+      uint16_t raw = adc_read();
+    
+      // 3. Convert to voltage based on a standard 3.3V reference
+      float voltage = raw * (3.3f / 4095.0f);
+    
+      // 4. Calculate Celsius using the official RP2040 datasheet formula
+      float temperatureC = 27.0f - ((voltage - 0.706f) / 0.001721f);
+    
+      return temperatureC;
+  }
+
   }
 
   const char *getManufacturerName() const override { return "PicoEbyteSx1262 RP2040-LoRa"; }
