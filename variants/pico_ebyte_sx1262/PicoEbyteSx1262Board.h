@@ -53,6 +53,8 @@ public:
     return 0;
 #endif
 
+  }
+
   // Add this right inside the public: section of your class definition
   float getMCUTemperature() override {
       // 1. Point the ADC mux to channel 4 (connected to the internal sensor)
@@ -68,8 +70,6 @@ public:
       float temperatureC = 27.0f - ((voltage - 0.706f) / 0.001721f);
     
       return temperatureC;
-  }
-
   }
 
   const char *getManufacturerName() const override { return "PicoEbyteSx1262 RP2040-LoRa"; }
