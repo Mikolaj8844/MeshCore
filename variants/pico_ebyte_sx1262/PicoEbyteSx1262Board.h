@@ -57,21 +57,22 @@ public:
 
   // Add this right inside the public: section of your class definition
   float getMCUTemperature() override {
-    adc_select_input(4); 
+    // adc_select_input(4); 
   
-    uint32_t raw = 0;
-    for(int i = 0; i < 8; i++) {
-      raw += adc_read();
-    }
-    float avg_raw = raw / 8.0f;
+    // uint32_t raw = 0;
+    // for(int i = 0; i < 8; i++) {
+    //   raw += adc_read();
+    // }
+    // float avg_raw = raw / 8.0f;
   
-    // Clean up: Remove any artificial 16-bit shift logic or hardcoded "-65.0f" offsets.
-    // The rpipico target ensures avg_raw will correctly be natively between 0 and 4095.
-    const float vref = 3.324f; 
-    float voltage = avg_raw * (vref / 4095.0f);
+    // // Clean up: Remove any artificial 16-bit shift logic or hardcoded "-65.0f" offsets.
+    // // The rpipico target ensures avg_raw will correctly be natively between 0 and 4095.
+    // const float vref = 3.324f; 
+    // float voltage = avg_raw * (vref / 4095.0f);
   
-    float temperatureC = 27.0f - ((voltage - 0.706f) / 0.001721f);
-    return temperatureC;
+    // float temperatureC = 27.0f - ((voltage - 0.706f) / 0.001721f);
+    // return temperatureC;
+    return analogReadTemp();
   }
 
   const char *getManufacturerName() const override { return "PicoEbyteSx1262 RP2040-LoRa"; }
