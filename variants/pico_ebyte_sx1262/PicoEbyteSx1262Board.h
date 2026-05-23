@@ -51,6 +51,8 @@ public:
 #else
     return 0;
 #endif
+
+  float getMCUTemperature() override;
   }
 
   const char *getManufacturerName() const override { return "PicoEbyteSx1262 RP2040-LoRa"; }
