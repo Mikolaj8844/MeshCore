@@ -57,16 +57,20 @@ public:
 
   // Add this right inside the public: section of your class definition
   float getMCUTemperature() override {
-      // 1. Point the ADC mux to channel 4 (connected to the internal sensor)
       adc_select_input(4); 
     
-      // 2. Read the raw 12-bit value (0 - 4095)
-      uint16_t raw = adc_read();
+      // Smooth out electrical ripple by averaging 8 samples
+      uint32_t raw = 0;
+      for(int i = 0; i < 8; i++) {
+          raw += adc_read();
+      }
+      float avg_raw = raw / 8.0f;
     
-      // 3. Convert to voltage based on a standard 3.3V reference
-      float voltage = raw * (3.3f / 4095.0f);
+      // Inject your precise multimeter measurement here
+      const float vref = 3.324f; 
+      float voltage = avg_raw * (vref / 4095.0f);
     
-      // 4. Calculate Celsius using the official RP2040 datasheet formula
+      // Official RP2040 calibration formula
       float temperatureC = 27.0f - ((voltage - 0.706f) / 0.001721f);
     
       return temperatureC;
