@@ -1,0 +1,46 @@
+name: Build ProMicro + Ebyte SX1262 Firmwares
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'companion-*'
+      - 'repeater-*'
+      - 'room-server-*'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Clone Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Build Environment
+        uses: ./.github/actions/setup-build-environment
+
+      - name: Build Firmwares
+        env:
+          FIRMWARE_VERSION: ${{ env.GIT_TAG_VERSION }}
+        run: |
+          export PIO_PROJECT_DIR=$PWD
+          /usr/bin/env bash build.sh build-matching-firmwares promicro_ebyte_sx1262
+
+      - name: Upload Workflow Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-firmwares
+          path: out
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: Firmware ${{ env.GIT_TAG_VERSION }}
+          body: ""
+          draft: true
+          files: out/*
