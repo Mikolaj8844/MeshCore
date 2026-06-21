@@ -28,9 +28,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Number of pins
 
-#define PINS_COUNT           (23)
-#define NUM_DIGITAL_PINS     (23)
-#define NUM_ANALOG_INPUTS    (3)
+#define PINS_COUNT           (48)
+#define NUM_DIGITAL_PINS     (48)
+#define NUM_ANALOG_INPUTS    (8)
 #define NUM_ANALOG_OUTPUTS   (0)
 
 ////////////////////////////////////////////////////////////////////////////////
