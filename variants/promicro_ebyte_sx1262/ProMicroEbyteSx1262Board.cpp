@@ -1,7 +1,5 @@
 #include "ProMicroEbyteSx1262Board.h"
 
-#include "Adafruit_LittleFS.h"
-
 #include <Arduino.h>
 #include <Wire.h>
 
@@ -32,10 +30,4 @@ void ProMicroEbyteSx1262Board::begin() {
   pinMode(PIN_VCC_ON, OUTPUT);
   digitalWrite(PIN_VCC_ON, HIGH);
   delay(10); // give sx1262 some time to power up
-
-  // Forces the Pico flash layout to format itself if blank
-  if (!InternalFileSystem.begin()) {
-    InternalFileSystem.format();
-    InternalFileSystem.begin();
-  }
 }
