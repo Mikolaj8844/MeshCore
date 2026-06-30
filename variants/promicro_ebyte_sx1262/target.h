@@ -10,9 +10,10 @@
 #include <helpers/SensorManager.h>
 #include <ProMicroEbyteSx1262Board.h>
 
+#include <helpers/ui/MomentaryButton.h>
+
 #ifdef DISPLAY_CLASS
   #include <helpers/ui/SSD1306Display.h>
-  #include <helpers/ui/MomentaryButton.h>
 #endif
 
 
