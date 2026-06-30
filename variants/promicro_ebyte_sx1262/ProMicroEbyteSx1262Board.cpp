@@ -1,25 +1,37 @@
+#include "ProMicroEbyteSx1262Board.h"
+
+#include "LittleFS.h"
+
 #include <Arduino.h>
 #include <Wire.h>
 
-#include "ProMicroEbyteSx1262Board.h"
+void ProMicroEbyteSx1262Board::begin() {
+  NRF52Board::begin();
+  btn_prev_state = HIGH;
 
-void ProMicroEbyteSx1262Board::begin() {    
-    NRF52Board::begin();
-    btn_prev_state = HIGH;
-  
-    pinMode(PIN_VBAT_READ, INPUT);
+  pinMode(BATTERY_PIN, INPUT);
 
-    #ifdef BUTTON_PIN
-      pinMode(BUTTON_PIN, INPUT_PULLUP);
-    #endif
+#ifdef P_LORA_TX_LED
+  pinMode(P_LORA_TX_LED, OUTPUT);
+#endif
 
-    #if defined(PIN_BOARD_SDA) && defined(PIN_BOARD_SCL)
-      Wire.setPins(PIN_BOARD_SDA, PIN_BOARD_SCL);
-    #endif
-    
-    Wire.begin();
+#ifdef PIN_BUTTON1
+  pinMode(PIN_BUTTON1, INPUT_PULLUP);
+#endif
 
-    pinMode(SX126X_POWER_EN, OUTPUT);
-    digitalWrite(SX126X_POWER_EN, HIGH);
-    delay(10);   // give sx1262 some time to power up
+#if defined(PIN_WIRE_SDA) && defined(PIN_WIRE_SCL)
+  Wire.setPins(PIN_BOARD_SDA, PIN_BOARD_SCL);
+#endif
+
+  Wire.begin();
+
+  pinMode(PIN_VCC_ON, OUTPUT);
+  digitalWrite(PIN_VCC_ON, HIGH);
+  delay(10); // give sx1262 some time to power up
+
+  // Forces the Pico flash layout to format itself if blank
+  if (!LittleFS.begin()) {
+    LittleFS.format();
+    LittleFS.begin();
+  }
 }

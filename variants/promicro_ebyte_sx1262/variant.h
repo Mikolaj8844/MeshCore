@@ -19,64 +19,47 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Power
 
-#define PIN_EXT_VCC          (21)
-#define EXT_VCC              (PIN_EXT_VCC)
+#define PIN_EXT_VCC           (13)
+#define EXT_VCC               (PIN_EXT_VCC)
 
-#define BATTERY_PIN          (17)
-#define ADC_RESOLUTION       12
+#define BATTERY_PIN           (4)
 
 ////////////////////////////////////////////////////////////////////////////////
 // Number of pins
 
-#define PINS_COUNT           (48)
-#define NUM_DIGITAL_PINS     (48)
-#define NUM_ANALOG_INPUTS    (8)
-#define NUM_ANALOG_OUTPUTS   (0)
-
-////////////////////////////////////////////////////////////////////////////////
-// UART pin definition
-
-#define PIN_SERIAL1_TX       (1)
-#define PIN_SERIAL1_RX       (0)
+#define PINS_COUNT            (48)
+#define NUM_DIGITAL_PINS      (48)
+#define NUM_ANALOG_INPUTS     (8)
+#define NUM_ANALOG_OUTPUTS    (0)
 
 ////////////////////////////////////////////////////////////////////////////////
 // I2C pin definition
 
-#define WIRE_INTERFACES_COUNT 2
-
-#define PIN_WIRE_SDA         (6)
-#define PIN_WIRE_SCL         (7)
-#define PIN_WIRE1_SDA        (13)
-#define PIN_WIRE1_SCL        (14)
+#define WIRE_INTERFACES_COUNT 1
 
 ////////////////////////////////////////////////////////////////////////////////
 // SPI pin definition
 
-#define SPI_INTERFACES_COUNT 2
-
-#define PIN_SPI_SCK          (2)
-#define PIN_SPI_MISO         (3)
-#define PIN_SPI_MOSI         (4)
-
-#define PIN_SPI_NSS          (5)
-
-#define PIN_SPI1_SCK         (18)
-#define PIN_SPI1_MISO        (19)
-#define PIN_SPI1_MOSI        (20)
+#define SPI_INTERFACES_COUNT  1
 
 ////////////////////////////////////////////////////////////////////////////////
 // Builtin LEDs
 
-#define PIN_LED              (22)
-#define LED_PIN              PIN_LED
-#define LED_BLUE             PIN_LED
-#define LED_BUILTIN          PIN_LED
-#define LED_STATE_ON         1
+#ifdef PIN_SPI_TX_LED
+  #define PIN_LED             PIN_SPI_TX_LED
+#else
+  #define PIN_LED             (15)
+#endif
+
+#define LED_PIN               PIN_LED
+#define LED_BLUE              PIN_LED
+#define LED_BUILTIN           PIN_LED
+#define LED_STATE_ON          1
 
 ////////////////////////////////////////////////////////////////////////////////
 // Builtin buttons
 
-#define PIN_BUTTON1          (6)
-#define BUTTON_PIN           PIN_BUTTON1
-
-
+#ifdef PIN_BUTTON1
+  #define BUTTON_PIN          PIN_BUTTON1
+  #define PIN_USER_BTN        PIN_BUTTON1
+#endif
