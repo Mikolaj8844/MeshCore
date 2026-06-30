@@ -34,13 +34,18 @@ public:
       adc_mult = multiplier;
     }
 
-    // If our early I2C scan flagged the node as missing a display
+    // If our early I2C hardware scan flagged the display as missing
     if (is_headless) {
-      // MeshCore is fully initialized in this scope, so we can 
-      // safely write directly to the active preferences block!
-      mesh::NodePrefs* prefs = (mesh::NodePrefs*)getNodePrefs();
-      if (prefs != nullptr && prefs->ble_pin == 0) {
-        prefs->ble_pin = 864200; // Enforce our fixed default PIN
+      // Get the raw memory configuration address from the framework base class
+      void* raw_prefs = getNodePrefs();
+      if (raw_prefs != nullptr) {
+        // Cast directly to a 32-bit unsigned integer array pointer.
+        // Index [0] points directly to the active ble_pin byte register.
+        uint32_t* ble_pin_ptr = (uint32_t*)raw_prefs;
+        
+        if (ble_pin_ptr[0] == 0) {
+          ble_pin_ptr[0] = 864200; // Directly overwrite with your fixed default PIN
+        }
       }
     }
 
