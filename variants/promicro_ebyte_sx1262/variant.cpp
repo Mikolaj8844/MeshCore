@@ -1,4 +1,3 @@
-#include "WVariant.h"
 #include "variant.h"
 #include "wiring_constants.h"
 #include "wiring_digital.h"
@@ -7,61 +6,6 @@ const uint32_t g_ADigitalPinMap[] = {
   0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15,
   16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
   32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47
-};
-
-// 2. The Required Core Description Matrix (Must contain exactly 48 definitions)
-const PinDescription g_APinDescription[] = {
-  // PORT 0: Pins 0 to 31
-  { NOT_A_PORT,  0, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.00
-  { NOT_A_PORT,  1, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.01
-  { NOT_A_PORT,  2, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.02
-  { NOT_A_PORT,  3, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.03
-  { NOT_A_PORT,  4, PIN_ATTR_DIGITAL | PIN_ATTR_ANALOG, A4 }, // P0.04 (AIN2)
-  { NOT_A_PORT,  5, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.05
-  { NOT_A_PORT,  6, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.06
-  { NOT_A_PORT,  7, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.07
-  { NOT_A_PORT,  8, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.08
-  { NOT_A_PORT,  9, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.09
-  { NOT_A_PORT, 10, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.10
-  { NOT_A_PORT, 11, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.11
-  { NOT_A_PORT, 12, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.12
-  { NOT_A_PORT, 13, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.13
-  { NOT_A_PORT, 14, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.14
-  { NOT_A_PORT, 15, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.15
-  { NOT_A_PORT, 16, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.16
-  { NOT_A_PORT, 17, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.17
-  { NOT_A_PORT, 18, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.18
-  { NOT_A_PORT, 19, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.19
-  { NOT_A_PORT, 20, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.20
-  { NOT_A_PORT, 21, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.21
-  { NOT_A_PORT, 22, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.22
-  { NOT_A_PORT, 23, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.23
-  { NOT_A_PORT, 24, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.24
-  { NOT_A_PORT, 25, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.25
-  { NOT_A_PORT, 26, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.26
-  { NOT_A_PORT, 27, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.27
-  { NOT_A_PORT, 28, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.28
-  { NOT_A_PORT, 29, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.29
-  { NOT_A_PORT, 30, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.30
-  { NOT_A_PORT, 31, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P0.31
-
-  // PORT 1: Pins 32 to 47 (Mapped sequentially by adding 32)
-  { NOT_A_PORT,  0, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.00 (Index 32)
-  { NOT_A_PORT,  1, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.01 (Index 33)
-  { NOT_A_PORT,  2, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.02 (Index 34)
-  { NOT_A_PORT,  3, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.03 (Index 35)
-  { NOT_A_PORT,  4, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.04 (Index 36)
-  { NOT_A_PORT,  5, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.05 (Index 37)
-  { NOT_A_PORT,  6, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.06 (Index 38)
-  { NOT_A_PORT,  7, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.07 (Index 39)
-  { NOT_A_PORT,  8, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.08 (Index 40)
-  { NOT_A_PORT,  9, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.09 (Index 41)
-  { NOT_A_PORT, 10, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.10 (Index 42)
-  { NOT_A_PORT, 11, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.11 (Index 43)
-  { NOT_A_PORT, 12, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.12 (Index 44)
-  { NOT_A_PORT, 13, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.13 (Index 45)
-  { NOT_A_PORT, 14, PIN_ATTR_DIGITAL, NOT_A_PIN }, // P1.14 (Index 46)
-  { NOT_A_PORT, 15, PIN_ATTR_DIGITAL, NOT_A_PIN }  // P1.15 (Index 47)
 };
 
 void initVariant() {}
