@@ -31,7 +31,7 @@ bool radio_init() {
   pinMode(PIN_SPI_NSS, OUTPUT);
   digitalWrite(PIN_SPI_NSS, HIGH);
 
-  SPI.begin(false);
+  SPI.begin();
 
   //passing NULL skips init of SPI
   return radio.std_init(NULL);

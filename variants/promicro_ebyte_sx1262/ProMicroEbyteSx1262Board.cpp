@@ -26,6 +26,7 @@ void ProMicroEbyteSx1262Board::begin() {
 #endif
 
   Wire.begin();
+  Serial1.begin(9600);
 
   pinMode(PIN_VCC_ON, OUTPUT);
   digitalWrite(PIN_VCC_ON, HIGH);

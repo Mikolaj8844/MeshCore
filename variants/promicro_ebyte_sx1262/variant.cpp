@@ -1,6 +1,7 @@
 #include "variant.h"
 #include "wiring_constants.h"
 #include "wiring_digital.h"
+#include "WVariant.h"
 
 const uint32_t g_ADigitalPinMap[] = {
   0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15,
