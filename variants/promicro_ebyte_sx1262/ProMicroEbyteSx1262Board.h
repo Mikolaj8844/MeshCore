@@ -33,6 +33,17 @@ public:
     else {
       adc_mult = multiplier;
     }
+
+    // If our early I2C scan flagged the node as missing a display
+    if (is_headless) {
+      // MeshCore is fully initialized in this scope, so we can 
+      // safely write directly to the active preferences block!
+      mesh::NodePrefs* prefs = (mesh::NodePrefs*)getNodePrefs();
+      if (prefs != nullptr && prefs->ble_pin == 0) {
+        prefs->ble_pin = 864200; // Enforce our fixed default PIN
+      }
+    }
+
     return true;
   }
   float getAdcMultiplier() const override {
