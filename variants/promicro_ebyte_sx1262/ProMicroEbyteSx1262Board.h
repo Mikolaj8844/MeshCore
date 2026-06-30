@@ -14,7 +14,6 @@ protected:
 public:
   void begin();
   ProMicroEbyteSx1262Board() : NRF52Board("ProMicro_Nice_Nano_OTA") {}
-  bool is_headless = false; 
 
   uint16_t getBattMilliVolts() override {
     analogReadResolution(12);
@@ -33,22 +32,6 @@ public:
     else {
       adc_mult = multiplier;
     }
-
-    // If our early I2C hardware scan flagged the display as missing
-    if (is_headless) {
-      // Get the raw memory configuration address from the framework base class
-      void* raw_prefs = getNodePrefs();
-      if (raw_prefs != nullptr) {
-        // Cast directly to a 32-bit unsigned integer array pointer.
-        // Index [0] points directly to the active ble_pin byte register.
-        uint32_t* ble_pin_ptr = (uint32_t*)raw_prefs;
-        
-        if (ble_pin_ptr[0] == 0) {
-          ble_pin_ptr[0] = 864200; // Directly overwrite with your fixed default PIN
-        }
-      }
-    }
-
     return true;
   }
   float getAdcMultiplier() const override {
