@@ -22,8 +22,9 @@ SensorManager sensors;
 
 #ifdef DISPLAY_CLASS
   DISPLAY_CLASS display;
-  MomentaryButton user_btn(PIN_BUTTON1, 1000, true, true);
 #endif
+
+MomentaryButton user_btn(PIN_BUTTON1, 1000, true, true);
 
 bool radio_init() {
   rtc_clock.begin(Wire);
