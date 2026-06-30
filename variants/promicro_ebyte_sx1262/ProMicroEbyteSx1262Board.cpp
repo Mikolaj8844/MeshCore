@@ -34,8 +34,8 @@ void ProMicroEbyteSx1262Board::begin() {
   delay(10); // give sx1262 some time to power up
 
   // Forces the Pico flash layout to format itself if blank
-  if (!LittleFS.begin()) {
-    LittleFS.format();
-    LittleFS.begin();
+  if (!InternalFileSystem.begin()) {
+    InternalFileSystem.format();
+    InternalFileSystem.begin();
   }
 }
