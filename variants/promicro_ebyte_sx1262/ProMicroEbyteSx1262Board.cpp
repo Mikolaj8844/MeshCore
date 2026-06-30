@@ -28,6 +28,28 @@ void ProMicroEbyteSx1262Board::begin() {
   Wire.begin();
   Serial1.begin(9600);
 
+  bool screen_found = false;
+
+  // Probe primary display address (0x3C)
+  Wire.beginTransmission(0x3C);
+  if (Wire.endTransmission() == 0) {
+    screen_found = true;
+  } else {
+    // Fallback: Probe secondary display address (0x3D)
+    Wire.beginTransmission(0x3D);
+    if (Wire.endTransmission() == 0) {
+      screen_found = true;
+    }
+  }
+
+  if (!screen_found) {
+    is_headless = true; 
+    Serial.println("[I2C Scan] No display found at 0x3C or 0x3D. Headless mode active.");
+  } else {
+    is_headless = false;
+    Serial.println("[I2C Scan] Display detected! Standard randomized security active.");
+  }
+
   pinMode(PIN_VCC_ON, OUTPUT);
   digitalWrite(PIN_VCC_ON, HIGH);
   delay(10); // give sx1262 some time to power up

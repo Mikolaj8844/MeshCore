@@ -14,6 +14,7 @@ protected:
 public:
   void begin();
   ProMicroEbyteSx1262Board() : NRF52Board("ProMicro_Nice_Nano_OTA") {}
+  bool is_headless = false; 
 
   uint16_t getBattMilliVolts() override {
     analogReadResolution(12);
