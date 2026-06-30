@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 #include <helpers/ArduinoHelpers.h>
-#include <MeshCore.h> 
+#include <Wire.h>
 
 ProMicroEbyteSx1262Board board;
 
