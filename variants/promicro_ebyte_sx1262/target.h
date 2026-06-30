@@ -20,7 +20,6 @@ extern ProMicroEbyteSx1262Board board;
 extern WRAPPER_CLASS radio_driver;
 extern AutoDiscoverRTCClock rtc_clock;
 extern EnvironmentSensorManager sensors;
-extern SensorManager sensors;
 
 #ifdef DISPLAY_CLASS
   extern DISPLAY_CLASS display;

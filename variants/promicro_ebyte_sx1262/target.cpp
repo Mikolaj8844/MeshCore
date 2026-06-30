@@ -10,7 +10,6 @@ WRAPPER_CLASS radio_driver(radio, board);
 
 VolatileRTCClock fallback_clock;
 AutoDiscoverRTCClock rtc_clock(fallback_clock);
-SensorManager sensors;
 
 #if ENV_INCLUDE_GPS
   #include <helpers/sensors/MicroNMEALocationProvider.h>

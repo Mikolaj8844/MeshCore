@@ -7,6 +7,10 @@
 
 void ProMicroEbyteSx1262Board::begin() {
   NRF52Board::begin();
+
+  // 1. Force the Pico's USB Serial stack to initialize at boot
+  Serial.begin(115200);
+
   btn_prev_state = HIGH;
 
   pinMode(BATTERY_PIN, INPUT);
@@ -20,7 +24,7 @@ void ProMicroEbyteSx1262Board::begin() {
 #endif
 
 #if defined(PIN_WIRE_SDA) && defined(PIN_WIRE_SCL)
-  Wire.setPins(PIN_BOARD_SDA, PIN_BOARD_SCL);
+  Wire.setPins(PIN_WIRE_SDA, PIN_WIRE_SCL);
 #endif
 
   Wire.begin();
