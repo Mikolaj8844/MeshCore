@@ -28,6 +28,12 @@ MomentaryButton user_btn(PIN_BUTTON1, 1000, true, true);
 bool radio_init() {
   rtc_clock.begin(Wire);
 
+  if (!the_mesh.isDisplayEnabled()) {
+    if (the_mesh.getNodePrefs()->ble_pin == 0) {
+      the_mesh.getNodePrefs()->ble_pin = 864200; // Your exact 6-digit fixed PIN fallback
+    }
+  }
+
   pinMode(PIN_SPI_NSS, OUTPUT);
   digitalWrite(PIN_SPI_NSS, HIGH);
 
