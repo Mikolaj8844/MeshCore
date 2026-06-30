@@ -1,6 +1,6 @@
 #include "ProMicroEbyteSx1262Board.h"
 
-#include "littlefs.h"
+#include "Adafruit_LittleFS.h"
 
 #include <Arduino.h>
 #include <Wire.h>
