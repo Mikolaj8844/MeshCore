@@ -26,7 +26,6 @@ void ProMicroEbyteSx1262Board::begin() {
 #endif
 
   Wire.begin();
-  Serial1.begin(9600);
 
   bool screen_found = false;
 
@@ -45,6 +44,17 @@ void ProMicroEbyteSx1262Board::begin() {
   if (!screen_found) {
     is_headless = true; 
     Serial.println("[I2C Scan] No display found at 0x3C or 0x3D. Headless mode active.");
+
+    // // HEADLESS DETECTED: We write directly to the framework's global config blocks.
+    // // This intercepts the execution flow exactly when the buses are ready, but 
+    // // safely BEFORE the Bluetooth stack locks in its authentication keys!
+    
+    // // Step A: Force the active pairing configuration to use your fixed PIN selection
+    // config.bluetooth.fixed_pin = 864200; 
+    
+    // // Step B: Ensure the runtime state deactivates any legacy random pairing loops
+    // config.bluetooth.enabled = true;
+    // config.bluetooth.mode = BluetoothConfig_PairingMode_FIXED_PIN;
   } else {
     is_headless = false;
     Serial.println("[I2C Scan] Display detected! Standard randomized security active.");

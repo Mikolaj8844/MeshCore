@@ -28,6 +28,9 @@ MomentaryButton user_btn(PIN_BUTTON1, 1000, true, true);
 bool radio_init() {
   rtc_clock.begin(Wire);
 
+  Serial1.setPins(PIN_SERIAL1_TX, PIN_SERIAL1_RX);
+  Serial1.begin(9600);
+
   pinMode(PIN_SPI_NSS, OUTPUT);
   digitalWrite(PIN_SPI_NSS, HIGH);
 
